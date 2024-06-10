@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll menu</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      a,
+      a:hover {
+        text-decoration: none;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 50px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="item" href="/pages/appeal-inbox/">
+          <i>9999</i>
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="active item" href="/pages/appeal-inbox/">
+          <i>99</i>
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <i>9999</i>
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="active item" href="/pages/appeal-inbox/">
+          <i>99</i>
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <i>9999</i>
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="active item" href="/pages/appeal-inbox/">
+          <i>99</i>
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+        <a class="item" href="/pages/appeal-inbox/">
+          <span>Общий профиль</span>
+        </a>
+      </nav>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('nav').forEach((elem) => {
+          new TwpxScrollMenu(elem);
+        });
+      });
+    </script>
+  </body>
+</html>
