@@ -40,7 +40,9 @@ class TwpxScrollMenu {
     this.sm = document.createElement('div');
     this.sm.className = 'twpx-scroll-menu';
     this.sm.innerHTML = `
-      <div class="twpx-scroll-menu-wrapper">${this.elem.innerHTML}</div>
+      <div class="twpx-scroll-menu-overflow">
+        <div class="twpx-scroll-menu-wrapper">${this.elem.innerHTML}</div>
+      </div>
       <div class="twpx-scroll-menu-arrows">
         <div class="twpx-scroll-menu-arrow-right"></div>
         <div class="twpx-scroll-menu-arrow-left"></div>
@@ -61,6 +63,9 @@ class TwpxScrollMenu {
     .twpx-scroll-menu {
       position: relative;
     }
+    .twpx-scroll-menu-overflow {
+      overflow: hidden;
+    }
     .twpx-scroll-menu-wrapper {
       display: flex;
       overflow: hidden;
@@ -70,13 +75,25 @@ class TwpxScrollMenu {
     }
     .twpx-scroll-menu:before,
     .twpx-scroll-menu:after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 24px;
       height: 100%;
-      background-color: #fff;
+      background-image: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
       z-index: 10;
+    }
+    .twpx-scroll-menu:after {
+      left: auto;
+      right: 0;
+      background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+    .twpx-scroll-menu.twpx-scroll-menu--right:before,
+    .twpx-scroll-menu.twpx-scroll-menu--left:after,
+    .twpx-scroll-menu:hover:before,
+    .twpx-scroll-menu:hover:after {
+      display: none;
     }
     .twpx-scroll-menu__item {
       display: flex;
