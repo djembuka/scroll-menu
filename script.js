@@ -27,6 +27,7 @@ class TwpxScrollMenu {
       this.createHtml();
       this.createCss();
       this.arrowEvents();
+      this.hoverEvent();
       this.initialized = true;
     }
   }
@@ -54,7 +55,7 @@ class TwpxScrollMenu {
 
     this.elem.parentNode.insertBefore(this.sm, this.elem);
     this.elem.remove();
-    this.sm.classList.add('twpx-scroll-menu--right');
+    this.sm.classList.add('twpx-scroll-menu--no-right');
   }
 
   createCss() {
@@ -89,8 +90,8 @@ class TwpxScrollMenu {
       right: 0;
       background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
     }
-    .twpx-scroll-menu.twpx-scroll-menu--right:before,
-    .twpx-scroll-menu.twpx-scroll-menu--left:after,
+    .twpx-scroll-menu.twpx-scroll-menu--no-right:before,
+    .twpx-scroll-menu.twpx-scroll-menu--no-left:after,
     .twpx-scroll-menu:hover:before,
     .twpx-scroll-menu:hover:after {
       display: none;
@@ -214,12 +215,25 @@ class TwpxScrollMenu {
       transform: translateX(0);
       -webkit-transform: translateX(0);
     }
-    .twpx-scroll-menu.twpx-scroll-menu--left .twpx-scroll-menu-arrow-right,
-    .twpx-scroll-menu.twpx-scroll-menu--right .twpx-scroll-menu-arrow-left {
+    .twpx-scroll-menu.twpx-scroll-menu--no-left .twpx-scroll-menu-arrow-right,
+    .twpx-scroll-menu.twpx-scroll-menu--no-right .twpx-scroll-menu-arrow-left {
       opacity: 0 !important;
     }
     `;
     document.querySelector('head').appendChild(styleElement);
+  }
+
+  hoverEvent() {
+    this.sm.addEventListener('mouseenter', (e) => {
+      if (this.calculateWidth() <= this.sm.clientWidth) {
+        this.sm.classList.add(
+          'twpx-scroll-menu--no-right',
+          'twpx-scroll-menu--no-left'
+        );
+      } else {
+        this.moveTo(0);
+      }
+    });
   }
 
   arrowEvents() {
@@ -233,8 +247,10 @@ class TwpxScrollMenu {
   }
 
   moveTo(dist) {
-    this.sm.classList.remove('twpx-scroll-menu--left');
-    this.sm.classList.remove('twpx-scroll-menu--right');
+    this.sm.classList.remove(
+      'twpx-scroll-menu--no-left',
+      'twpx-scroll-menu--no-right'
+    );
     let left = parseInt(this.wrapper.style.marginLeft, 10) || 0;
     left = left + dist;
 
@@ -242,10 +258,10 @@ class TwpxScrollMenu {
 
     if (left >= 0) {
       left = 0;
-      this.sm.classList.add('twpx-scroll-menu--right');
+      this.sm.classList.add('twpx-scroll-menu--no-right');
     } else if (left <= -1 * (width - this.sm.clientWidth)) {
       left = -1 * (width - this.sm.clientWidth);
-      this.sm.classList.add('twpx-scroll-menu--left');
+      this.sm.classList.add('twpx-scroll-menu--no-left');
     }
 
     this.wrapper.style.marginLeft = left + 'px';
