@@ -219,6 +219,17 @@ class TwpxScrollMenu {
     .twpx-scroll-menu.twpx-scroll-menu--no-right .twpx-scroll-menu-arrow-left {
       opacity: 0 !important;
     }
+    @media(max-width: 767px) {
+      .twpx-scroll-menu-wrapper {
+        overflow: auto;
+        padding-bottom: 5px;
+      }
+      .twpx-scroll-menu-arrows,
+      .twpx-scroll-menu:after,
+      .twpx-scroll-menu:before {
+        display: none;
+      }
+    }
     `;
     document.querySelector('head').appendChild(styleElement);
   }
