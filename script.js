@@ -69,6 +69,7 @@ class TwpxScrollMenu {
     }
     .twpx-scroll-menu-wrapper {
       display: flex;
+      column-gap: 20px;
       overflow: hidden;
       position: relative;
       transition: margin-left 0.5s ease;
@@ -100,15 +101,11 @@ class TwpxScrollMenu {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-right: 20px;
       border-radius: 7px;
       background-color: #f0f5fc;
       padding: 5px 15px;
       height: 48px;
       cursor: pointer;
-    }
-    .twpx-scroll-menu__item:last-child {
-      margin-right: 0;
     }
     .twpx-scroll-menu__item span {
       white-space: nowrap;
